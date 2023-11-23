@@ -216,8 +216,8 @@ function sumOfCodes(str) {
  *   startsWith('Hello World', 'World') => false
  *   startsWith('Hello World', 'Hello') => true
  */
-function startsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function startsWith(str, substr) {
+  return str.startsWith(substr);
 }
 
 /**
@@ -231,8 +231,8 @@ function startsWith(/* str, substr */) {
  *   endsWith('Hello World', 'World') => true
  *   endsWith('Hello World', 'Hello') => false
  */
-function endsWith(/* str, substr */) {
-  throw new Error('Not implemented');
+function endsWith(str, substr) {
+  return str.endsWith(substr);
 }
 
 /**
@@ -248,8 +248,10 @@ function endsWith(/* str, substr */) {
  *   formatTime(0, 45) => "00:45"
  *   formatTime(0, 0) => "00:00"
  */
-function formatTime(/* minutes, seconds */) {
-  throw new Error('Not implemented');
+function formatTime(minutes, seconds) {
+  const a = String(minutes).padStart(2, `0`);
+  const b = String(seconds).padStart(2, `0`);
+  return `${a}:${b}`;
 }
 
 /**
@@ -262,8 +264,8 @@ function formatTime(/* minutes, seconds */) {
  *   reverseString('abcdef') => 'fedcba'
  *   reverseString('12345') => '54321'
  */
-function reverseString(/* str */) {
-  throw new Error('Not implemented');
+function reverseString(str) {
+  return str.split('').reverse().join('');
 }
 
 /**
@@ -277,8 +279,21 @@ function reverseString(/* str */) {
  *   orderAlphabetically('textbook') => 'bekoottx'
  *   orderAlphabetically('abc123xyz') => '123abcxyz'
  */
-function orderAlphabetically(/* str */) {
-  throw new Error('Not implemented');
+function orderAlphabetically(str) {
+  let arr = [];
+  arr = str.split('');
+  let a = '';
+  let b = '';
+  for (let i = 0; i < arr.length - 1; i += 1) {
+    if (arr[i] > arr[i + 1] === true) {
+      a = arr[i];
+      b = arr[i + 1];
+      arr[i] = b;
+      arr[i + 1] = a;
+      i = -1;
+    }
+  }
+  return arr.join('');
 }
 
 /**
@@ -293,8 +308,8 @@ function orderAlphabetically(/* str */) {
  *   containsSubstring('JavaScript is Fun', 'Python') => false
  *   containsSubstring('12345', '34') => true
  */
-function containsSubstring(/* str, substring */) {
-  throw new Error('Not implemented');
+function containsSubstring(str, substring) {
+  return str.includes(substring);
 }
 
 /**
@@ -311,8 +326,29 @@ function containsSubstring(/* str, substring */) {
  *   countVowels('aEiOu') => 5
  *   countVowels('XYZ') => 1
  */
-function countVowels(/* str */) {
-  throw new Error('Not implemented');
+function countVowels(str) {
+  let arr = [];
+  arr = str.split('');
+  let sum = 0;
+  for (let i = 0; i < arr.length; i += 1) {
+    if (
+      arr[i] === 'a' ||
+      arr[i] === 'e' ||
+      arr[i] === 'i' ||
+      arr[i] === 'o' ||
+      arr[i] === 'u' ||
+      arr[i] === 'y' ||
+      arr[i] === 'A' ||
+      arr[i] === 'E' ||
+      arr[i] === 'I' ||
+      arr[i] === 'O' ||
+      arr[i] === 'U' ||
+      arr[i] === 'Y'
+    ) {
+      sum += 1;
+    }
+  }
+  return sum;
 }
 
 /**
@@ -328,8 +364,19 @@ function countVowels(/* str */) {
  *   isPalindrome('apple') => false
  *   isPalindrome('No lemon, no melon') => true
  */
-function isPalindrome(/* str */) {
-  throw new Error('Not implemented');
+function isPalindrome(str) {
+  const a = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+  let arr1 = [];
+  arr1 = a.split('');
+  const arr2 = arr1.reverse().slice(0);
+  let sum = 0;
+  arr1.reverse();
+  for (let i = 0; i < arr1.length; i += 1) {
+    if (arr1[i] === arr2[i]) {
+      sum += 1;
+    }
+  }
+  return sum === arr1.length;
 }
 
 /**
